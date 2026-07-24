@@ -152,7 +152,7 @@ export async function renderVideoById(explicitVideoId) {
       return `${String(value)} views`;
     };
 
-    const parseCount = (v) => {
+    const parseNumber = (v) => {
       if (v == null) return 0;
       if (typeof v === 'number') return v;
       const s = String(v).trim();
@@ -297,8 +297,8 @@ export async function renderVideoById(explicitVideoId) {
       likeBtn.addEventListener('click', async () => {
         const liked = localStorage.getItem(storageKey('liked')) === '1';
         const disliked = localStorage.getItem(storageKey('disliked')) === '1';
-        let likes = parseCount(likeCountEl.textContent);
-        let dislikes = parseCount(dislikeCountEl.textContent);
+        let likes = parseNumber(likeCountEl.textContent);
+        let dislikes = parseNumber(dislikeCountEl.textContent);
         if (!liked) {
           likes += 1;
           localStorage.setItem(storageKey('liked'),'1');
@@ -317,8 +317,8 @@ export async function renderVideoById(explicitVideoId) {
       dislikeBtn.addEventListener('click', async () => {
         const disliked = localStorage.getItem(storageKey('disliked')) === '1';
         const liked = localStorage.getItem(storageKey('liked')) === '1';
-        let likes = parseCount(likeCountEl.textContent);
-        let dislikes = parseCount(dislikeCountEl.textContent);
+        let likes = parseNumber(likeCountEl.textContent);
+        let dislikes = parseNumber(dislikeCountEl.textContent);
         if (!disliked) {
           dislikes += 1;
           localStorage.setItem(storageKey('disliked'),'1');
